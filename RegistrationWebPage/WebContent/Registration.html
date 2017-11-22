@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+<script type="text/javascript">
+
+function validateFname()
+{
+    var fname = document.getElementById("fname").value;
+    if(fname == ""|| fname == null)
+   {
+   alert("Please Enter your First Name");
+   }
+    else if(fname.length<4)
+    {
+    alert("Length of your first name should be atleast 4 characters")
+    }
+}
+function validateEmail()
+{
+    var emailElement = document.getElementById("mail").value;
+    if(emailElement==""||emailElement==null)
+    {
+        alert("Please Enter your Email Id")
+    }
+    
+}
+function validteGender()
+{
+    var maleChecked = document.getElementById('male').checked;
+    var femaleCheked = document.getElementById("female").checked;
+
+    if(maleChecked==""&&femaleCheked=="")
+    {
+        alert("Please select your gender");
+    }
+
+}
+function changeBgColor(elementRef)
+{
+  
+    elementRef.style.backgroundColor  = "#DCDCDC";
+}
+function resetBgColor(elementRef)
+{
+    elementRef.style.backgroundColor  = "#FFFFFF";
+}
+function contentChange(elementRef)
+{
+    alert(elementRef.value);
+}
+
+var xmlhttp;
+
+function validateusername(){		
+	
+	var uname = document.getElementById("username").value;	
+	
+	if (window.XMLHttpRequest) {
+	    // code for modern browsers
+	    xmlhttp = new XMLHttpRequest();
+	 } else {
+	    // code for old IE browsers
+	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	//adding request info to the xmlhttp request object
+	xmlhttp.open("GET","validateServ?username="+uname,true);
+	
+	//registering the callback function
+	xmlhttp.onreadystatechange=processResponse;
+	
+	xmlhttp.send();
+}
+
+function processResponse(){
+	if(xmlhttp.readyState == 4 && xmlhttp.status == 200){			
+		document.getElementById("message").innerHTML=xmlhttp.responseText;			
+	}
+}
+
+</script>
+</head>
+<body>
+    <form action="" onsubmit=" validateFname(),validteGender()">
+        <h2 align ="center"> Registration From</h2>
+        <div align = "center">
+        <table>
+        
+		<tr>
+			<td align="left"><label>Username </label></td>
+			<td><input type="text" id="username" name="username" onchange="validateusername()"  onblur="resetbgcolor(this)" onfocus="changebgcolor(this)"></td>
+			<td><div id="message"></div></td>					
+		</tr>
+            <tr>
+                <td align ="left">
+                    <label>FirstName:</label>
+                    
+                    <td>
+                        <input type="text" name="firstname" id="fname" onchange=" validateFname()" onfocus="changeBgColor(this)" onblur="resetBgColor(this)">
+                    </td>
+                    	
+                </td>
+            </tr>
+            <tr>
+                <td  align ="left">
+                    <label>LastName:</label>
+                </td>
+                <td>
+                    <input type="text" name="lastname" id="lname" onfocus="changeBgColor(this)" onblur="resetBgColor(this)"  onchange="contentChange(this)">
+                </td>
+            </tr>
+            <tr>
+                <td  align ="left">
+                    <label>Email:</label>
+                </td>
+                <td>
+                    <input type ="text" name="email" id="mail" onfocus="changeBgColor(this)" onblur="resetBgColor(this)" onchange="contentChange(this)">
+                </td>
+                <td><div id="emailMessage"></div></td>
+            </tr>
+            <tr>
+                <td  align ="left">
+                    <label>Gender:</label>
+                </td>
+                <td>
+                    <input type="radio" value="male" name="gender" id = "male"onchange="contentChange(this)"><label>Male</label>
+                
+                    <input type="radio" value="female" name="gender" id="female" onchange="contentChange(this)"><label>Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="REGISTER"></td>
+            </tr>
+           
+        </table>
+     
+    </div>
+    </form>
+</body>
+</html>
