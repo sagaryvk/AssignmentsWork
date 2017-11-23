@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $("#search").keyup(function(){
+ 
+        var search = $(this).val();
+ 
+        $(".Citylist li").each(function(){
+ 
+            if ($(this).text().search(new RegExp(search, "i")) < 0) {
+                $(this).fadeOut();
+               }    
+               else {
+                $(this).show();
+               
+            }
+        });
+ 
+        
+    });
+});
+</script>
+</head>
+<body>
+    <h2 align="center" class="myclass">Search City</h2>
+    <label>City</label> <input type="text" class="text-input" id="search" value="" />
+
+    <ol class="Citylist">
+        <li>newyork</li>
+        <li>Newjersey</li>
+        <li>nevada</li>
+        <li>Nebraska</li>
+        <li>Nashville</li>
+        <li>New haven</li>
+        <li>New Boston</li>
+        <li>New Buffalo</li>
+      </ol>
+ 
+</body>
+</html>

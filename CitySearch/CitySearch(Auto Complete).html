@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>City Search</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
+<script>
+$(function() {
+      var cities = [
+        "newyork", "Newjersey", "nevada", "Nebraska", "Nashville", "New haven", "New Boston", "New Buffalo"
+      ];
+      $("#city").autocomplete({
+        source: cities
+      });
+    });
+</script>
+</head>
+<body>
+<div class="citylist">
+ 
+  <label for="city">Enter city name: </label>
+ 
+  <input id="city">
+ 
+</div>
+</body>
+</html>
