@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,19 @@ public class OrderDetails implements Serializable {
 	@Column(name = "orderLineNumber")
 	private int orderLineNumber;
 	
+	@ManyToOne
+	@JoinColumn(name = "productCode")
+	private Products prod;
+	
+	
+	public Products getProd() {
+		return prod;
+	}
+
+	public void setProd(Products prod) {
+		this.prod = prod;
+	}
+
 	public OrderDetails() {
 		super();
 	}

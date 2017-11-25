@@ -27,8 +27,8 @@ public class ProductLines implements Serializable {
 	@Column(name = "image")
 	private String image;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="productLine")
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "prodLines")
+	//@JoinColumn(name="productLine")
 	private Set<Products> products;
 
 	public Set<Products> getProducts() {

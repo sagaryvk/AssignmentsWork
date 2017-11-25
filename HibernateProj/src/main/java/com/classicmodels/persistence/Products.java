@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,11 +36,23 @@ private int quantityInStock;
 private long buyPrice;
 @Column(name = "MSRP")
 private long MSRP;
-@OneToMany(cascade=CascadeType.ALL)
-@JoinColumn(name="productCode")
+@OneToMany(cascade=CascadeType.ALL,mappedBy = "prod")
+//@JoinColumn(name="productCode")
+
 private Set<OrderDetails> orderDetails;
 
+@ManyToOne
+@JoinColumn(name ="productLine")
+private ProductLines prodLines;
 
+
+
+public ProductLines getProdLines() {
+	return prodLines;
+}
+public void setProdLines(ProductLines prodLines) {
+	this.prodLines = prodLines;
+}
 public Set<OrderDetails> getOrderDetails() {
 	return orderDetails;
 }
