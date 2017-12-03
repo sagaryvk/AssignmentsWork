@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+	
+		
+		
+		
+		$("#registerForm").submit(function(event){
+			
+			var formData = {
+					'username' : $('input[name=username]').val(),
+					'firstname': $('input[name=firstname]').val(),
+					'lastname' : $('input[name=lastname]').val(),
+					'email'    : $('input[name=email]').val(),
+					'gender'   : $('input[name=gender]').val()					
+			};
+			
+			$.ajax({
+					type:'POST',
+					url:'Users',
+					data:formData,
+					dataType:'json',
+					success:function(data,textStatus,jqXHR){
+						console.log(data);
+					}
+			})
+			
+			event.preventDefault();
+			
+		});
+		
+	});
+	
+	
+
+</script>
+
+</head>
+<body>
+
+	<h2 align="center">Register Form</h2>
+	
+	<form action="" id="registerForm">
+		<div align="center">
+		<table>
+		
+		<tr>
+			<td align="left"><label>Username </label></td><td><input type="text" id="username" name="username"></td>
+			<td><div id="message"></div></td>					
+		</tr>
+		
+		
+		<tr>
+			<td align="left"><label>Firstname </label></td><td><input type="text" id="fname" name="firstname"></td>		
+		</tr>
+		
+		<tr>
+			<td align="left"><label>Lastname  </label></td><td><input type="text" id="lname" name="lastname" ></td>
+		</tr>
+		<tr>
+			<td align="left"><label>Email     </label></td><td><input type="text" id="email" name="email" ></td>
+			
+		</tr>
+		<tr>
+		<td align="left"><label>Gender    </label></td>		
+		<td>Female : <input type="radio" id="gender" name="gender" value="female">
+		Male   : <input type="radio" id="gender" name="gender" value="male"></td>
+		</tr>
+		
+		<tr>
+			<td><input type="submit" value="REGISTER"/></td>
+		</tr>
+		
+		</table>
+		</div>
+	</form>
+
+</body>
+</html>
